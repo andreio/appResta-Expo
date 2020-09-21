@@ -61,9 +61,7 @@ export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <SectionList<keyof typeof sectionData>
-        style={styles.sectionListLayout}
         stickySectionHeadersEnabled={false}
-        contentContainerStyle={styles.sectionList}
         sections={sections}
         renderItem={renderSection}
         keyExtractor={(item) => item}
@@ -82,15 +80,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F8F8F8",
   },
-  sectionListLayout: {
-    // flex: 1,
-    // backgroundColor: "blue",
-  },
-  sectionList: {
-    // flex: 1,
-    // backgroundColor: "red",
-  },
-
   title: {
     fontSize: 20,
     marginTop: 20,
