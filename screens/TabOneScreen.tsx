@@ -32,25 +32,30 @@ const sections: SectionListData<keyof typeof sectionData>[] = [
   },
 ];
 
-const renderItem: ListRenderItem<number> = ({ item, index }) => (
-  <View key={item + "" + index} style={styles.restaurantContainer}>
+const ItemRenderer = React.memo<{ item: number }>(({ item }) => (
+  <View style={styles.restaurantContainer}>
     <Restaurant id={item} />
   </View>
+));
+
+const renderItem: ListRenderItem<number> = ({ item }) => (
+  <ItemRenderer item={item} />
 );
+
+const SectionRenderer = React.memo<{
+  item: keyof typeof sectionData;
+}>(({ item }) => (
+  <FlatList
+    horizontal={true}
+    data={sectionData[item]}
+    renderItem={renderItem}
+    keyExtractor={(item, index) => item + "" + index}
+  />
+));
 
 const renderSection: SectionListRenderItem<keyof typeof sectionData> = ({
   item,
-  index,
-}) => {
-  return (
-    <FlatList
-      horizontal={true}
-      data={sectionData[item]}
-      renderItem={renderItem}
-      keyExtractor={(item) => item + "" + index}
-    />
-  );
-};
+}) => <SectionRenderer item={item} />;
 
 export default function TabOneScreen() {
   return (
