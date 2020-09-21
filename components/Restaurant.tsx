@@ -28,10 +28,18 @@ const RestaurantTop: React.FunctionComponent<{ restaurant: IRestaurant }> = ({
 const RestaurantBottom: React.FunctionComponent<{
   restaurant: IRestaurant;
 }> = ({ restaurant: { name, address, type } }) => {
-  const location = useLocation();
+  //   const location = useLocation();
+  const location = {
+    location: {
+      coords: {
+        latitude: 50.0687505,
+        longitude: 14.4636519,
+      },
+    },
+    error: "",
+  };
   const distance = React.useMemo(() => getDistance(address, location), [
     address,
-    location,
   ]);
   return (
     <View style={styles.bottomPanel}>

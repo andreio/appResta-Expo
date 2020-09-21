@@ -22,5 +22,5 @@ export const useLocation = () => {
             setLocation({ location, error: null });
         })();
     });
-    return location;
+
 }

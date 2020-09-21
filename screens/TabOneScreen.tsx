@@ -12,9 +12,9 @@ import { FlatList } from "react-native-gesture-handler";
 import { Restaurant } from "../components/Restaurant";
 
 const sectionData = {
-  breakfast: [2, 2, 2, 2, 2, 2],
-  lunch: [2, 2, 2, 2, 2, 2],
-  dinner: [2, 2, 2, 2, 2, 2],
+  breakfast: [2, 6, 5, 6, 2, 5],
+  lunch: [6, 5, 2, 5, 5, 6],
+  dinner: [5, 2, 6, 2, 6, 2],
 };
 
 const sections: SectionListData<keyof typeof sectionData>[] = [
@@ -44,7 +44,6 @@ const renderSection: SectionListRenderItem<keyof typeof sectionData> = ({
 }) => {
   return (
     <FlatList
-      key={item + "" + index}
       horizontal={true}
       data={sectionData[item]}
       renderItem={renderItem}
