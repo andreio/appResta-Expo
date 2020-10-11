@@ -1,0 +1,19 @@
+mutation UpdateUserLocation(
+  $id: Int!
+  $addressText: String
+  $addressCoords: point
+  $addressCountryCode: String
+) {
+  update_user_by_pk(
+    pk_columns: { id: $id }
+    _set: {
+      addressText: $addressText
+      addressCoords: $addressCoords
+      addressCountryCode: $addressCountryCode
+    }
+  ) {
+    addressCoords
+    addressText
+    addressCountryCode
+  }
+}

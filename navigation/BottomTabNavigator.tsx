@@ -10,6 +10,7 @@ import TabTwoScreen from "../screens/TabTwoScreen";
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from "../types";
 
 import { Text, View } from "../components/Themed";
+import { AppContextProvider } from "../contexts/AppContext";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 const Header = () => (
@@ -18,7 +19,13 @@ const Header = () => (
   </View>
 );
 
-export default function BottomTabNavigator() {
+export const BottomTabNavigator: React.FunctionComponent = () => (
+  <AppContextProvider id={1}>
+    <BottomTabNavigatorInternal />
+  </AppContextProvider>
+);
+
+function BottomTabNavigatorInternal() {
   const colorScheme = useColorScheme();
 
   return (

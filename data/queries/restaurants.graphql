@@ -1,20 +1,20 @@
 query Restaurants {
   restaurant {
     address
-    bkg_url
+    bkgUrl
     category
     category2
     category3
     id
-    logo_url
+    logoUrl
     name
-    start_monday
-    start_friday
-    start_saturday
-    start_sunday
-    start_thursday
-    start_wednesday
-    start_tuesday
+    startMonday
+    startFriday
+    startSaturday
+    startSunday
+    startThursday
+    startWednesday
+    startTuesday
     type
   }
 }

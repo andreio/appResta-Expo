@@ -18,6 +18,7 @@ export default {
           },
         },
       },
+      AddressSetup: 'adderessSetup',
       NotFound: '*',
     },
   },

@@ -1,20 +1,20 @@
 query Restaurant($id: Int!) {
   restaurant_by_pk(id: $id) {
     type
-    start_wednesday
-    start_tuesday
-    start_thursday
-    start_sunday
-    start_saturday
-    start_monday
+    startWednesday
+    startTuesday
+    startThursday
+    startSunday
+    startSaturday
+    startMonday
     name
-    start_friday
+    startFriday
     id
-    logo_url
+    logoUrl
     category3
     category2
     category
-    bkg_url
+    bkgUrl
     address
   }
 }

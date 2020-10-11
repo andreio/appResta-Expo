@@ -1,0 +1,10 @@
+query User($id: Int!) {
+  user_by_pk(id: $id) {
+    addressCoords
+    addressText
+    firstName
+    id
+    lastName
+    addressCountryCode
+  }
+}

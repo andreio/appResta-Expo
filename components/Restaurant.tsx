@@ -10,14 +10,14 @@ interface RestaurantProps {
 }
 
 const RestaurantTop: React.FunctionComponent<{ restaurant: IRestaurant }> = ({
-  restaurant: { bkg_url, logo_url },
+  restaurant: { bkgUrl, logoUrl },
 }) => (
-  <ImageBackground source={{ uri: bkg_url }} style={styles.resataurantCover}>
+  <ImageBackground source={{ uri: bkgUrl }} style={styles.resataurantCover}>
     <View style={styles.coverTop}></View>
     <View style={styles.coverBottom}>
       <View style={styles.logoContainer}>
         <ImageBackground
-          source={{ uri: logo_url }}
+          source={{ uri: logoUrl }}
           style={styles.resataurantLogo}
         ></ImageBackground>
       </View>
@@ -28,18 +28,9 @@ const RestaurantTop: React.FunctionComponent<{ restaurant: IRestaurant }> = ({
 const RestaurantBottom: React.FunctionComponent<{
   restaurant: IRestaurant;
 }> = ({ restaurant: { name, address, type } }) => {
-  //   const location = useLocation();
-  const location = {
-    location: {
-      coords: {
-        latitude: 50.0687505,
-        longitude: 14.4636519,
-      },
-    },
-    error: "",
-  };
+  const location = useLocation(true)
   const distance = React.useMemo(() => getDistance(address, location), [
-    address,
+    location.latitude, location.longitude,
   ]);
   return (
     <View style={styles.bottomPanel}>
@@ -56,7 +47,7 @@ const RestaurantBottom: React.FunctionComponent<{
   );
 };
 
-const getDistance = (point: string, { location }: LocationInfo) => {
+const getDistance = (point: string, location: LocationInfo) => {
   if (!location) {
     return null;
   }
@@ -67,8 +58,8 @@ const getDistance = (point: string, { location }: LocationInfo) => {
       longitude,
     },
     {
-      latitude: location.coords.latitude,
-      longitude: location.coords.longitude,
+      latitude: location.latitude,
+      longitude: location.longitude,
     }
   );
   let unit = "m";
