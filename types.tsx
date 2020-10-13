@@ -1,7 +1,6 @@
 export type RootStackParamList = {
   Root: undefined;
   NotFound: undefined;
-  AddressSetup: undefined;
 };
 
 export type BottomTabParamList = {
@@ -10,6 +9,11 @@ export type BottomTabParamList = {
   Favourites: undefined;
   More: undefined;
 };
+
+export type ClientAppParamsList = {
+  AddressSetup: undefined;
+  Home: undefined;
+}
 
 export type TabOneParamList = {
   TabOneScreen: undefined;

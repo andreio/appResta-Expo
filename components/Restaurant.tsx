@@ -4,6 +4,7 @@ import { View, Text } from "./Themed";
 import { useRestaurantQuery, Restaurant as IRestaurant } from "../data";
 import { getPreciseDistance } from "geolib";
 import { useLocation, LocationInfo } from "../hooks/useLocation";
+import {useAppContext} from "../contexts/AppContext";
 
 interface RestaurantProps {
   id: number;

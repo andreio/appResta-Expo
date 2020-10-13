@@ -6,19 +6,28 @@ export default {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          ClientApp: {
             screens: {
-              TabOneScreen: 'one',
-            },
-          },
-          TabTwo: {
-            screens: {
-              TabTwoScreen: 'two',
-            },
-          },
+              TabOne: {
+                screens: {
+                  TabOneScreen: 'one',
+                },
+              },
+              TabTwo: {
+                screens: {
+                  TabTwoScreen: 'two',
+                },
+              },
+              AddressSetup: 'addressSetup',
+            }
+          }
         },
       },
-      AddressSetup: 'adderessSetup',
+      Admin: {
+        screens: {
+
+        }
+      },
       NotFound: '*',
     },
   },

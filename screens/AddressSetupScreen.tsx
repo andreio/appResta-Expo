@@ -8,6 +8,7 @@ import {reverseGeocode} from "../utils/geo";
 import {GeoAutoComplete} from "../components/GeoAutoComplete";
 import {useUpdateUserLocationMutation} from "../data";
 import {useNavigation} from "@react-navigation/native";
+import {useAppContext} from "../contexts/AppContext";
 
 type AddressSetupContainerProps = {
     address: string | undefined;
@@ -90,20 +91,20 @@ const AddressSetup: React.FunctionComponent<AddressSetupProps>
     );
 };
 
-export const AddressSetupContainer: React.FunctionComponent<AddressSetupContainerProps> = ({address: givenAddress}) => {
+export const AddressSetupContainer: React.FunctionComponent<AddressSetupContainerProps> = () => {
     const location = useLocation(true);
+    const {user: {location: savedLocation}} = useAppContext();
+
     const [{longitude, latitude, address}, setState] = React.useState({longitude: 0, latitude: 0, address: ""})
 
     React.useEffect(() => {
-        if (longitude && latitude && address) {
-            return;
-        }
         setState({
-            longitude: location.longitude,
-            latitude: location.latitude,
-            address: givenAddress || location.address
+            longitude: savedLocation?.coords.longitude || location.longitude,
+            latitude: savedLocation?.coords.latitude || location.latitude,
+            address: savedLocation?.address || location.address
         })
-    }, [location.longitude, location.latitude, location.address, givenAddress])
+    }, [location.longitude, location.latitude, location.address,
+        savedLocation?.address, savedLocation?.coords.longitude, savedLocation?.coords.latitude])
 
     const onAddressChanged = React.useCallback((address: string, latitude: number, longitude: number) => {
         setState({
